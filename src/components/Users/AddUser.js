@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 import ErrorModal from '../UI/ErrorModal';
+import Wrapper from '../Helpers/Wrapper';
 import classes from './AddUser.module.css';
 
 const AddUser = (props) => {
@@ -46,16 +47,21 @@ const AddUser = (props) => {
     };
 
     return (
-        <div>
-        {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler} />}
-        <Card className={classes.input}>
+        <Wrapper>
+            {error && 
+                <ErrorModal 
+                    title={error.title} 
+                    message={error.message} 
+                    onConfirm={errorHandler} 
+                />}
+            <Card className={classes.input}>
                 <form onSubmit={addUserHandler}>
-                <label htmlFor="username">Username</label>
-                <input 
-                    id= "username" 
-                    type="text" 
-                    value={enteredUsername} 
-                    onChange={usernameChangeHandler} 
+                    <label htmlFor="username">Username</label>
+                    <input 
+                        id= "username" 
+                        type="text" 
+                        value={enteredUsername} 
+                        onChange={usernameChangeHandler} 
                 />
                 <label htmlFor="age">Username</label>
                 <input 
@@ -65,9 +71,9 @@ const AddUser = (props) => {
                     onChange={ageChangeHandler}
                 />
                 <Button type="submit">Add User</Button>
-            </form>
-        </Card>
-        </div>
+                </form>
+            </Card>
+        </Wrapper>
     );
 };
 
